@@ -1,0 +1,70 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Code Review & Refactoring",
+      "description": "Review the latest pull requests and refactor the core service logic to improve maintainability and performance across the application modules.",
+      "attachments": 2,
+      "authorAvatars": ["", ""],
+      "date": "2026-04-18T00:00:00.000Z",
+      "isPriority": true,
+      "tag": "Development",
+      "status": "todo"
+    },
+    {
+      "id": 2,
+      "title": "Database Schema Design",
+      "description": "Finalize the relational schema for the new module, ensuring all foreign key constraints and indexes are optimized for frequent queries.",
+      "attachments": 1,
+      "authorAvatars": [""],
+      "date": "2026-04-20T00:00:00.000Z",
+      "isPriority": false,
+      "tag": "Architecture",
+      "status": "inProgress"
+    },
+    {
+      "id": 3,
+      "title": "UI Component Testing",
+      "description": "Implement unit tests for standalone components and verify reactive patterns to ensure state management remains consistent during user interactions.",
+      "attachments": 5,
+      "authorAvatars": ["", "", ""],
+      "date": "2026-04-22T00:00:00.000Z",
+      "isPriority": true,
+      "tag": "Quality Assurance",
+      "status": "todo"
+    },
+    {
+      "id": 4,
+      "title": "Project Documentation",
+      "description": "Update the technical documentation with the latest API endpoints and deployment instructions for the Linux-based staging environment.",
+      "attachments": 0,
+      "authorAvatars": [""],
+      "date": "2026-04-25T00:00:00.000Z",
+      "isPriority": true,
+      "tag": "Documentation",
+      "status": "inReview"
+    },
+    {
+      "id": 5,
+      "title": "Performance Optimization",
+      "description": "Analyze the current execution bottlenecks and apply numerical method optimizations to reduce calculation time for the data processing engine.",
+      "attachments": 3,
+      "authorAvatars": ["", ""],
+      "date": "2026-04-28T00:00:00.000Z",
+      "isPriority": true,
+      "tag": "Optimization",
+      "status": "inProgress"
+    },
+    {
+      "id": 6,
+      "title": "Stakeholder Meeting",
+      "description": "Prepare the progress presentation and demonstrate the current prototype to align on the next set of requirements and milestones.",
+      "attachments": 1,
+      "authorAvatars": ["", "", "", ""],
+      "date": "2026-05-02T00:00:00.000Z",
+      "isPriority": false,
+      "tag": "Management",
+      "status": "done"
+    }
+  ]
+}

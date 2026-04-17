@@ -1,1 +1,131 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --red-soft: #e99898;
+  --color: #404040;
+  --main-color: #0013fe;
+  --soft-white: #e6ecf0;
+  --soft-gray: #d8d3d3;
+  --font-family: "Roboto", sans-serif;
+  --bg-btn: #e6ecf0;
+  --bg-circle: #d5d5d5;
+  --dark-dirty-green: #1d2d35;
+}
+html {
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: inherit; // цвет наследуется от li или своего класса
+  text-decoration: none; // убираем подчеркивание
+  display: block; // чтобы ссылка занимала весь li
+  width: 100%;
+  height: 100%;
+}
+
+/* 2. Обнуление базовых отступов */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+}
+
+button {
+  /* Убираем рамку и фон */
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+
+  /* Настройки шрифта (чтобы наследовались от родителя) */
+  font: inherit;
+  color: inherit;
+
+  /* Делаем курсор кликабельным */
+  cursor: pointer;
+
+  /* Убираем контур при клике (для чистого дизайна), 
+     но для доступности лучше заменить его на свой стиль */
+  outline: none;
+}
+
+.border-blue {
+  border-radius: 5px;
+  background: var(--main-color);
+  padding: 4px 12px;
+}
+
+input {
+  /* Убираем системные рамки и фон */
+  appearance: none;
+  -webkit-appearance: none; /* Для Safari */
+  background: transparent;
+  border: none;
+  outline: none;
+
+  /* Сброс внутренних отступов и маржи */
+  padding: 0;
+  margin: 0;
+
+  /* Наследование шрифта (инпуты по умолчанию его не наследуют!) */
+  font: inherit;
+  color: inherit;
+
+  /* Убираем специфические для браузеров элементы (например, в IE/Edge) */
+  &::-ms-clear,
+  &::-ms-reveal {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  /* Убираем синее свечение в Chrome/Safari при фокусе */
+  &:focus {
+    outline: none;
+  }
+}
+
+.btn {
+  border-radius: 5px;
+  padding: 10px 23px;
+  background: var(--bg-btn);
+  font-weight: 400;
+  font-size: 15px;
+  text-align: center;
+  color: #fff;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.active-btn {
+  background: var(--main-color);
+}
+
+.border-circle {
+  border-radius: 100%;
+  background-color: var(--bg-circle);
+}
