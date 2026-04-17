@@ -1,0 +1,69 @@
+:host {
+  background-color: var(--soft-white);
+  border-radius: 5px 5px 0 0;
+  padding: 13px 18px;
+  margin-top: 18px;
+}
+.column-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; // Разносим инфо и кнопки
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  &__badge {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 4px;
+
+    .icon-btn {
+      cursor: pointer;
+      font-size: 18px;
+      width: 24px;
+      height: 24px;
+
+      // 2. Теперь 50% сделает идеальный круг
+      border-radius: 50%;
+
+      border: none;
+      padding: 0; // Важно сбросить падинги, иначе они растянут круг в овал
+    }
+  }
+}
+
+.column-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Расстояние МЕЖДУ карточками */
+  margin-top: 16px; /* Отступ от заголовка колонки */
+
+  /* Если карточек будет слишком много, колонка будет скроллиться внутри */
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+
+  /* Скроллбар можно сделать красивым и тонким */
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #e0e0e0;
+    border-radius: 10px;
+  }
+}

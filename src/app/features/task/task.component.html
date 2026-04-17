@@ -1,0 +1,70 @@
+<div class="card">
+  <h4 class="card__title">{{ task.title }}</h4>
+
+  @if (task.description) {
+    <div class="card__description">
+      <p>{{ task.description }}</p>
+    </div>
+  }
+
+  <div class="card__tag">
+    <span class="border-blue">{{ task.tag }}</span>
+  </div>
+
+  <div class="card__footer">
+    <div class="card__stats">
+      @if (task.attachments > 0) {
+        <div class="stat-item">
+          <svg
+            width="11"
+            height="22"
+            viewBox="0 0 11 22"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M9.5 5V16.5C9.5 18.71 7.71 20.5 5.5 20.5C3.29 20.5 1.5 18.71 1.5 16.5V4C1.5 2.62 2.62 1.5 4 1.5C5.38 1.5 6.5 2.62 6.5 4V14.5C6.5 15.05 6.05 15.5 5.5 15.5C4.95 15.5 4.5 15.05 4.5 14.5V5H3V14.5C3 15.88 4.12 17 5.5 17C6.88 17 8 15.88 8 14.5V4C8 1.79 6.21 0 4 0C1.79 0 0 1.79 0 4V16.5C0 19.54 2.46 22 5.5 22C8.54 22 11 19.54 11 16.5V5H9.5Z"
+              fill="#1D2D35"
+            />
+          </svg>
+          <span>{{ task.attachments }}</span>
+        </div>
+      }
+      @if (task.isPriority) {
+        <div class="stat-item">
+          <svg
+            width="15"
+            height="17"
+            viewBox="0 0 15 17"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M9.4 2L9 0H0V17H2V10H7.6L8 12H15V2H9.4Z" fill="#FF0000" />
+          </svg>
+        </div>
+      }
+
+      <div class="stat-item">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10 0C4.5 0 0 4.5 0 10C0 15.5 4.5 20 10 20C15.5 20 20 15.5 20 10C20 4.5 15.5 0 10 0ZM14.2 14.2L9 11V5H10.5V10.2L15 12.9L14.2 14.2Z"
+            fill="#1D2D35"
+          />
+        </svg>
+        <span>{{ task.date | date:'MMM d' }}</span>
+      </div>
+    </div>
+
+    <!-- <div class="card__authors">
+      @for (avatar of task.authorAvatars; track avatar) {
+        <img [src]="avatar" alt="Author" />
+      }
+    </div> -->
+  </div>
+</div>

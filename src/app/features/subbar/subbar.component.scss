@@ -1,0 +1,33 @@
+:host {
+  background-color: var(--soft-white);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 55px;
+  margin-bottom: 18px;
+}
+
+.subbar {
+  &__text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #000;
+
+    span {
+      &:last-child {
+        color: #fff;
+      }
+    }
+  }
+
+  &__btn {
+    font-weight: 500;
+    font-size: 14px;
+    text-align: center;
+    color: var(--main-color);
+  }
+}

@@ -1,0 +1,17 @@
+<div class="column-header">
+  <div class="column-header__info">
+    <h3 class="column-header__title">{{ title() }}</h3>
+    <span class="column-header__badge border-circle">{{ count() }}</span>
+  </div>
+
+  <div class="column-header__actions">
+    <button class="icon-btn border-circle">+</button>
+    <button class="icon-btn border-circle">...</button>
+  </div>
+</div>
+
+<div class="column-body">
+  @for (task of tasks(); track task.id; let i = $index) {
+    <app-task [task]="task" cdkDrag [cdkDragData]="task">></app-task>
+  }
+</div>
