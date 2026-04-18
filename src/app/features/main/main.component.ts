@@ -5,6 +5,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { Store } from '@ngrx/store';
 import { taskFeature } from '../task/state/task.reducer';
 import { TaskActions } from '../task/state/task.action';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-main',
@@ -51,5 +52,19 @@ export class MainComponent {
     this.activeTab = tab;
   }
 
-  
+  onTaskDrop(event: CdkDragDrop<Task[]>, newStatus: string) {
+    if (event.previousContainer === event.container) {
+      // Логика сортировки внутри одной колонки (опционально)
+      // moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      const task = event.item.data as Task;
+      // Диспатчим экшен для обновления статуса в Store
+      this.store.dispatch(
+        TaskActions.updateTaskStatus({
+          taskId: task.id,
+          newStatus: newStatus,
+        }),
+      );
+    }
+  }
 }

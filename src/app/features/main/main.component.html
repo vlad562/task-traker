@@ -47,9 +47,36 @@
   </div>
 </div>
 
-<div class="board-columns">
-  <app-column title="To do" [tasks]="taskTodos()" />
-  <app-column title="In Progress" [tasks]="taskInProgress()" />
-  <app-column title="In review" [tasks]="taskInReview()" />
-  <app-column title="Done" [tasks]="taskDone()" />
+<div class="board-columns" cdkDropListGroup>
+  <app-column 
+    id="todo" 
+    title="To do" 
+    [tasks]="taskTodos()" 
+    [connectedTo]="['inProgress', 'review', 'done']"
+    (taskDropped)="onTaskDrop($event, 'todo')" 
+  />
+
+  <app-column 
+    id="inProgress" 
+    title="In Progress" 
+    [tasks]="taskInProgress()" 
+    [connectedTo]="['todo', 'review', 'done']"
+    (taskDropped)="onTaskDrop($event, 'inProgress')" 
+  />
+
+  <app-column 
+    id="review" 
+    title="In review" 
+    [tasks]="taskInReview()" 
+    [connectedTo]="['todo', 'inProgress', 'done']"
+    (taskDropped)="onTaskDrop($event, 'inReview')" 
+  />
+
+  <app-column 
+    id="done" 
+    title="Done" 
+    [tasks]="taskDone()" 
+    [connectedTo]="['todo', 'inProgress', 'review']"
+    (taskDropped)="onTaskDrop($event, 'done')" 
+  />
 </div>

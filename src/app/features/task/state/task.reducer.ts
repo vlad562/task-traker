@@ -22,5 +22,11 @@ export const taskFeature = createFeature({
       loading: false,
       error,
     })),
+    on(TaskActions.updateTaskStatus, (state, { taskId, newStatus }) => ({
+      ...state,
+      tasks: state.tasks.map((t) =>
+        t.id === taskId ? { ...t, status: newStatus } : t,
+      ),
+    })),
   ),
 });

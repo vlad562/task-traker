@@ -6,5 +6,7 @@ export const TaskActions = createActionGroup({
     'Load Tasks': emptyProps(),
     'Load Tasks Success': props<{ tasks: Task[] }>(),
     'Load Tasks Failure': props<{ error: string }>(),
+
+    'Update Task Status': props<{ taskId: number; newStatus: string }>(),
   },
 });
