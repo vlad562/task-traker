@@ -1,4 +1,4 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, input, OnInit } from '@angular/core';
 import { Task, TaskComponent } from '../task/task.component';
 
 @Component({
@@ -8,8 +8,10 @@ import { Task, TaskComponent } from '../task/task.component';
   styleUrl: './column.component.scss',
   imports: [TaskComponent],
 })
-export class ColumnComponent {
+export class ColumnComponent{
   title = input<string>('');
   tasks = input<Task[]>([]);
   count = computed(() => this.tasks().length);
+  columnId = input<string>('');
+
 }

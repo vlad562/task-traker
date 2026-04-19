@@ -1,70 +1,87 @@
 {
   "tasks": [
     {
-      "id": 1,
-      "title": "Code Review & Refactoring",
-      "description": "Review the latest pull requests and refactor the core service logic to improve maintainability and performance across the application modules.",
-      "attachments": 2,
-      "authorAvatars": ["", ""],
-      "date": "2026-04-18T00:00:00.000Z",
-      "isPriority": true,
-      "tag": "Development",
-      "status": "todo"
-    },
-    {
       "id": 2,
-      "title": "Database Schema Design",
-      "description": "Finalize the relational schema for the new module, ensuring all foreign key constraints and indexes are optimized for frequent queries.",
-      "attachments": 1,
-      "authorAvatars": [""],
-      "date": "2026-04-20T00:00:00.000Z",
+      "title": "Form Validation Logic",
+      "description": "Add complex asynchronous validators to the task creation form to check for duplicate titles against the database in real-time.",
+      "attachments": 2,
+      "authorAvatars": [
+        ""
+      ],
+      "date": "2026-04-27T11:00:00.000Z",
       "isPriority": false,
-      "tag": "Architecture",
-      "status": "inProgress"
-    },
-    {
-      "id": 3,
-      "title": "UI Component Testing",
-      "description": "Implement unit tests for standalone components and verify reactive patterns to ensure state management remains consistent during user interactions.",
-      "attachments": 5,
-      "authorAvatars": ["", "", ""],
-      "date": "2026-04-22T00:00:00.000Z",
-      "isPriority": true,
-      "tag": "Quality Assurance",
-      "status": "todo"
-    },
-    {
-      "id": 4,
-      "title": "Project Documentation",
-      "description": "Update the technical documentation with the latest API endpoints and deployment instructions for the Linux-based staging environment.",
-      "attachments": 0,
-      "authorAvatars": [""],
-      "date": "2026-04-25T00:00:00.000Z",
-      "isPriority": true,
-      "tag": "Documentation",
+      "tag": "Development",
       "status": "inReview"
     },
     {
-      "id": 5,
-      "title": "Performance Optimization",
-      "description": "Analyze the current execution bottlenecks and apply numerical method optimizations to reduce calculation time for the data processing engine.",
-      "attachments": 3,
-      "authorAvatars": ["", ""],
-      "date": "2026-04-28T00:00:00.000Z",
-      "isPriority": true,
+      "id": 3,
+      "title": "Performance Audit",
+      "description": "Profile the main dashboard using Chrome DevTools to identify unnecessary change detection cycles and implement OnPush strategy where applicable.",
+      "attachments": 4,
+      "authorAvatars": [
+        "",
+        ""
+      ],
+      "date": "2026-04-26T16:00:00.000Z",
+      "isPriority": false,
       "tag": "Optimization",
+      "status": "done"
+    },
+    {
+      "id": 4,
+      "title": "API Error Handling",
+      "description": "Implement a global HttpInterceptor to catch 4xx and 5xx errors, showing user-friendly notifications via a shared Toast service.",
+      "attachments": 0,
+      "authorAvatars": [
+        "",
+        "",
+        ""
+      ],
+      "date": "2026-04-25T09:00:00.000Z",
+      "isPriority": true,
+      "tag": "Backend Integration",
       "status": "inProgress"
     },
     {
-      "id": 6,
-      "title": "Stakeholder Meeting",
-      "description": "Prepare the progress presentation and demonstrate the current prototype to align on the next set of requirements and milestones.",
+      "id": 5,
+      "title": "Drag-and-Drop UX Polish",
+      "description": "Fine-tune CDK Drag-and-Drop animations and fix the issue where tasks cannot be moved into empty columns during rapid transitions.",
       "attachments": 1,
-      "authorAvatars": ["", "", "", ""],
-      "date": "2026-05-02T00:00:00.000Z",
-      "isPriority": false,
-      "tag": "Management",
-      "status": "done"
+      "authorAvatars": [
+        ""
+      ],
+      "date": "2026-04-24T14:30:00.000Z",
+      "isPriority": true,
+      "tag": "UI/UX",
+      "status": "todo"
+    },
+    {
+      "id": 6,
+      "title": "NgRx State Refactoring",
+      "description": "Optimize the global store by implementing memoized selectors and migrating legacy state slices to a more modular feature-based structure.",
+      "attachments": 3,
+      "authorAvatars": [
+        "",
+        ""
+      ],
+      "date": "2026-04-23T10:00:00.000Z",
+      "isPriority": true,
+      "tag": "Development",
+      "status": "inReview"
+    },
+    {
+      "id": 7,
+      "title": "Auth Guard Implementation",
+      "description": "Secure the administrative routes by adding functional guards and ensuring the NgRx auth stream is properly initialized before navigation.",
+      "attachments": 1,
+      "authorAvatars": [
+        "",
+        ""
+      ],
+      "date": "2026-04-28T08:45:00.000Z",
+      "isPriority": true,
+      "tag": "Security",
+      "status": "todo"
     }
   ]
 }

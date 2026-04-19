@@ -34,10 +34,14 @@
 }
 .board-columns {
   display: grid;
-  // Создаем 4 равные колонки
   grid-template-columns: repeat(4, 1fr);
-  // Расстояние между колонками (по макету примерно 24px)
   gap: 24px;
-  // Чтобы колонки были выровнены по верхнему краю
   align-items: start;
+}
+.drag-overlay {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: rotate(2deg);
+  opacity: 0.95;
 }

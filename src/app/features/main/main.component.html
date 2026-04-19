@@ -47,9 +47,29 @@
   </div>
 </div>
 
-<div class="board-columns">
-  <app-column title="To do" [tasks]="taskTodos()" />
-  <app-column title="In Progress" [tasks]="taskInProgress()" />
-  <app-column title="In review" [tasks]="taskInReview()" />
-  <app-column title="Done" [tasks]="taskDone()" />
+<div
+  class="board-columns"
+  (pointermove)="onPointerMove($event)"
+  (pointerup)="onPointerUp($event)"
+>
+  <app-column columnId="todo" title="To do" [tasks]="groupedTasks().todo" />
+  <app-column
+    columnId="inProgress"
+    title="inProgress"
+    [tasks]="groupedTasks().inProgress"
+  />
+  <app-column columnId="inReview" title="In review" [tasks]="groupedTasks().inReview" />
+  <app-column columnId="done" title="Done" [tasks]="groupedTasks().done" />
 </div>
+
+@if (dragService.state.activeId) {
+  <div
+    class="drag-overlay"
+    [style.left.px]="dragService.state.x"
+    [style.top.px]="dragService.state.y"
+    [style.width.px]="dragService.state.width"
+    [style.height.px]="dragService.state.height"
+  >
+    <app-task [task]="draggedTask()!" />
+  </div>
+}
