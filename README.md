@@ -1,27 +1,44 @@
-# TaskTracker
+# TaskTracker — Angular 18 + JSON Server
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.21.
+Это современное SPA-приложение для управления списком задач. Проект демонстрирует навыки построения компонентной архитектуры, работы с асинхронными запросами (RxJS) и управления состоянием в Angular.
 
-## Development server
+## Основные возможности
+- **Full CRUD**: Создание, просмотр, переключение статуса (reminder) и удаление задач.
+- **REST API Interaction**: Полноценное взаимодействие с бэкендом (имитация через JSON Server).
+- **Responsive Design**: Адаптивный интерфейс, удобный для мобильных устройств.
+- **Signals & RxJS**: Использование современных подходов Angular 18 для реактивности.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Технологический стек
+- **Frontend**: Angular 18 (Standalone Components, Signals).
+- **Language**: TypeScript.
+- **Backend Simulation**: JSON Server.
+- **Styling**: [Напишите здесь: CSS / SCSS / Tailwind].
+- **Icons**: [Напишите здесь: FontAwesome / Material Icons].
 
-## Code scaffolding
+## Установка и запуск
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Для работы проекта вам понадобятся [Node.js](https://nodejs.org) и [Angular CLI](https://angular.dev).
 
-## Build
+### 1. Клонирование репозитория
+```bash
+git clone https://github.com
+cd task-tracker
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### 2. Установка зависимостей
+```bash
+npm install
+```
 
-## Running unit tests
+### 3. Запуск JSON Server (Бэкенд)
+Приложение использует локальный файл `db.json` как базу данных.
+```bash
+npx json-server --watch db.json --port 5000
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### 4. Запуск Angular приложения (Фронтенд)
+Откройте второй терминал и выполните:
+```bash
+npm start
+```
+Перейдите по адресу `http://localhost:4200/`.

@@ -1,4 +1,4 @@
-import { Task } from "../task.component";
+import { Task } from "../interfaces/task.interface";
 
 export interface ITaskState {
     tasks: Task[];

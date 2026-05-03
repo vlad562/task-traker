@@ -23,6 +23,21 @@ export const taskFeature = createFeature({
       error,
     })),
 
+    on(TaskActions.createTask, (state) => ({
+      ...state,
+      loading: true,
+    })),
+    on(TaskActions.createTaskSuccess, (state, { task }) => ({
+      ...state,
+      loading: false,
+      tasks: [task, ...state.tasks],
+    })),
+    on(TaskActions.createTaskFailure, (state, { error }) => ({
+      ...state,
+      loading: false,
+      error,
+    })),
+
     on(TaskActions.updateTask, (state) => ({
       ...state,
       loading: true,
@@ -47,7 +62,7 @@ export const taskFeature = createFeature({
       };
     }),
 
-    on(TaskActions.switchTaskSuccess, (state, { targetTask, switchTask }) => {
+    on(TaskActions.switchTasksSuccess, (state, { targetTask, switchTask }) => {
       return {
         ...state,
         loading: false,
@@ -62,7 +77,7 @@ export const taskFeature = createFeature({
         }),
       };
     }),
-    on(TaskActions.switchTaskFailure, (state, { error }) => ({
+    on(TaskActions.switchTasksFailure, (state, { error }) => ({
       ...state,
       loading: false,
       error: error,

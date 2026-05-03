@@ -1,0 +1,22 @@
+.main__search {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    border: 1px solid var(--soft-gray);
+    border-radius: 5px;
+    padding: 8px 10px;
+  }
+  .main__btn {
+    button {
+      margin-right: 4px;
+    }
+  }
+  input {
+    width: 318px;
+    font-weight: 400;
+    font-size: 15px;
+    color: var(--soft-gray);
+    &::placeholder {
+      color: var(--soft-gray);
+    }
+  }

@@ -1,16 +1,18 @@
 import { Component, computed, inject } from '@angular/core';
 import { ColumnComponent } from '../column/column.component';
-import { Task, TaskComponent, TaskStatus } from '../task/task.component';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Store } from '@ngrx/store';
 import { taskFeature } from '../task/state/task.reducer';
 import { TaskActions } from '../task/state/task.action';
 import { DragService } from '../task/services/task.service';
+import { InputComponent } from '../../share/search-input/search-input.input.component';
+import { Task, TaskStatus } from '../task/interfaces/task.interface';
+import { TaskComponent } from '../task/task.component';
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [ColumnComponent, TaskComponent],
+  imports: [ColumnComponent, TaskComponent, InputComponent],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss',
 })
@@ -70,7 +72,6 @@ export class MainComponent {
     const toTask = element?.closest('[data-task-id]') as HTMLElement | null;
 
     if (toTask) {
-      
       const targetId = Number(toTask.getAttribute('data-task-id'));
       const switchId = this.dragService.state.activeId;
 

@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Task, TaskStatus } from '../../features/task/task.component';
+import { Task } from '../../features/task/interfaces/task.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -16,5 +15,9 @@ export class TaskService {
 
   updateTask(id: number, changes: Partial<Task>) {
     return this.http.patch<Task>(`${this.apiUrl}/${id}`, changes);
+  }
+  create(data: Task) {
+    console.log(data);
+    return this.http.post<Task>(`${this.apiUrl}`, data);
   }
 }

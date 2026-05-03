@@ -7,7 +7,7 @@
 .column-header {
   display: flex;
   align-items: center;
-  justify-content: space-between; // Разносим инфо и кнопки
+  justify-content: space-between; 
   &__info {
     display: flex;
     align-items: center;
@@ -39,11 +39,10 @@
       width: 24px;
       height: 24px;
 
-      // 2. Теперь 50% сделает идеальный круг
       border-radius: 50%;
 
       border: none;
-      padding: 0; // Важно сбросить падинги, иначе они растянут круг в овал
+      padding: 0; 
     }
   }
 }
@@ -51,14 +50,12 @@
 .column-body {
   display: flex;
   flex-direction: column;
-  gap: 12px; /* Расстояние МЕЖДУ карточками */
-  margin-top: 16px; /* Отступ от заголовка колонки */
+  gap: 12px; 
+  margin-top: 16px; 
 
-  /* Если карточек будет слишком много, колонка будет скроллиться внутри */
   max-height: calc(100vh - 200px);
   overflow-y: auto;
 
-  /* Скроллбар можно сделать красивым и тонким */
   &::-webkit-scrollbar {
     width: 4px;
   }

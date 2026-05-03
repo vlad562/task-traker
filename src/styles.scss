@@ -1,3 +1,4 @@
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
 :root {
   --red-soft: #e99898;
   --color: #404040;
@@ -128,4 +129,18 @@ input {
 .border-circle {
   border-radius: 100%;
   background-color: var(--bg-circle);
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+.cdk-overlay-container {
+  z-index: 9999 !important;
 }

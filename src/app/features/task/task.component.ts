@@ -2,20 +2,9 @@ import { DatePipe } from '@angular/common';
 import { Component, inject, input, Input } from '@angular/core';
 import { DragService } from './services/task.service';
 import { Store } from '@ngrx/store';
-import { TaskActions } from './state/task.action';
+import { Task } from './interfaces/task.interface';
 
-export type TaskStatus = 'todo' | 'inProgress' | 'inReview' | 'done';
-export interface Task {
-  id: number;
-  title: string;
-  description?: string;
-  tag: string;
-  attachments: number;
-  isPriority: boolean;
-  date: Date;
-  authorAvatars: string[];
-  status: TaskStatus;
-}
+
 
 @Component({
   selector: 'app-task',

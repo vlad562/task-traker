@@ -7,9 +7,13 @@ import { taskFeature } from './features/task/state/task.reducer';
 import { provideEffects } from '@ngrx/effects';
 import { TaskEffects } from './features/task/state/task.effects';
 import { provideHttpClient } from '@angular/common/http';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideNativeDateAdapter(),
+    provideAnimations(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideHttpClient(),
