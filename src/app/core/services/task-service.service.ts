@@ -17,7 +17,9 @@ export class TaskService {
     return this.http.patch<Task>(`${this.apiUrl}/${id}`, changes);
   }
   create(data: Task) {
-    console.log(data);
     return this.http.post<Task>(`${this.apiUrl}`, data);
+  }
+  deleteTask(id: number | string) {
+    return this.http.delete<void>(`${`${this.apiUrl}/${id}`}`);
   }
 }

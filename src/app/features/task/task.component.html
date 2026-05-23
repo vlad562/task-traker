@@ -1,5 +1,11 @@
-@if (task(); as t)  {
-  <div class="card" [attr.data-task-id]="t.id" [attr.data-status]="t.status" (pointerdown)="onPointerDown($event)">
+@if (task(); as t) {
+  <div
+    class="card"
+    [attr.data-task-id]="t.id"
+    [attr.data-status]="t.status"
+    (pointerdown)="onPointerDown($event)"
+    (appContextMenu)="openMenu($event, t.id)"
+  >
     <h4 class="card__title">{{ t.title }}</h4>
 
     @if (t.description) {
@@ -71,5 +77,16 @@
       }
     </div> -->
     </div>
+  </div>
+}
+
+@if (isMenuOpen()) {
+  <div
+    class="context-menu"
+    [style.top.px]="menuPosition().y"
+    [style.left.px]="menuPosition().x"
+    (click)="$event.stopPropagation()"
+  >
+    <button (click)="deleteTask()">Удалить задачу</button>
   </div>
 }

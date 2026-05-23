@@ -1,13 +1,6 @@
-import { Injectable, inject } from '@angular/core'; 
+import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import {
-  catchError,
-  concatMap,
-  forkJoin,
-  map,
-  mergeMap,
-  of,
-} from 'rxjs';
+import { catchError, concatMap, forkJoin, map, mergeMap, of } from 'rxjs';
 import { TaskService } from '../../../core/services/task-service.service';
 import { TaskActions } from './task.action';
 
@@ -48,7 +41,7 @@ export class TaskEffects {
       ofType(TaskActions.updateTask),
       mergeMap(({ id, changes }) =>
         this.taskService.updateTask(id, changes).pipe(
-          map((updatedTask) =>
+          map((updatedTask) => 
             TaskActions.updateTaskSuccess({ task: updatedTask }),
           ),
           catchError((error) =>
@@ -58,6 +51,23 @@ export class TaskEffects {
       ),
     ),
   );
+
+  deleteTask$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(TaskActions.deleteTask),
+      mergeMap(({ id }) =>
+        this.taskService.deleteTask(id).pipe(
+          map(() => {
+            return TaskActions.deleteTaskSuccess({ id });
+          }),
+          catchError((error) =>
+            of(TaskActions.deleteTaskFailure({ error: error.message })),
+          ),
+        ),
+      ),
+    ),
+  );
+
   switchTasks$ = createEffect(() =>
     this.actions$.pipe(
       ofType(TaskActions.switchTasks),

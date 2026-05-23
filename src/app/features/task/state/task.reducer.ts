@@ -1,6 +1,7 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
 import { initialState } from './task.state';
 import { TaskActions } from './task.action';
+import { state } from '@angular/animations';
 
 export const taskFeature = createFeature({
   name: 'Tasks',
@@ -42,14 +43,27 @@ export const taskFeature = createFeature({
       ...state,
       loading: true,
     })),
-
     on(TaskActions.updateTaskSuccess, (state, { task }) => ({
       ...state,
       loading: false,
       tasks: state.tasks.map((t) => (t.id === task.id ? { ...t, ...task } : t)),
     })),
-
     on(TaskActions.updateTaskFailure, (state, { error }) => ({
+      ...state,
+      loading: false,
+      error: error,
+    })),
+
+    on(TaskActions.deleteTask, (state) => ({
+      ...state,
+      loading: true,
+    })),
+    on(TaskActions.deleteTaskSuccess, (state, { id }) => ({
+      ...state,
+      loading: false,
+      tasks: state.tasks.filter((task) => task.id !== id),
+    })),
+    on(TaskActions.deleteTaskFailure, (state, { error }) => ({
       ...state,
       loading: false,
       error: error,
@@ -61,7 +75,6 @@ export const taskFeature = createFeature({
         loading: true,
       };
     }),
-
     on(TaskActions.switchTasksSuccess, (state, { targetTask, switchTask }) => {
       return {
         ...state,

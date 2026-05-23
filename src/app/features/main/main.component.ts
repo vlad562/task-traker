@@ -74,11 +74,16 @@ export class MainComponent {
     if (toTask) {
       const targetId = Number(toTask.getAttribute('data-task-id'));
       const switchId = this.dragService.state.activeId;
-
+      console.log(targetId, switchId)
+      if (targetId === switchId) {
+        this.dragService.clear();
+        return
+      }
       const allTasks = this.tasks();
       const task1 = allTasks.find((t) => t.id === targetId);
       const task2 = allTasks.find((t) => t.id === switchId);
-      if (task1 && task2 && targetId !== switchId) {
+
+      if (task1 && task2) {
         this.store.dispatch(
           TaskActions.switchTasks({
             targetTask: task1,
@@ -108,8 +113,6 @@ export class MainComponent {
 
     this.dragService.clear();
   }
-
-  updateTask(updateTask: Task[]) {}
 
   draggedTask = computed<Task | null>(() => {
     const id = this.dragService.state.activeId;

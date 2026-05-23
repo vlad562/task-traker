@@ -1,17 +1,6 @@
 {
   "tasks": [
     {
-      "id": 2,
-      "title": "Delete Task",
-      "description": "Create function for delete task",
-      "attachments": 0,
-      "authorAvatars": [],
-      "date": "2026-05-03T13:35:52.606Z",
-      "isPriority": true,
-      "tag": "Development",
-      "status": "todo"
-    },
-    {
       "id": 3,
       "title": "Form Validation Logic",
       "description": "Add complex asynchronous validators to the task creation form to check for duplicate titles against the database in real-time.",
@@ -22,10 +11,21 @@
       "date": "2026-04-27T11:00:00.000Z",
       "isPriority": false,
       "tag": "Development",
-      "status": "inProgress"
+      "status": "todo"
     },
     {
       "id": 4,
+      "title": "Delete Task",
+      "description": "Create function for delete task",
+      "attachments": 0,
+      "authorAvatars": [],
+      "date": "2026-05-03T13:35:52.606Z",
+      "isPriority": true,
+      "tag": "Development",
+      "status": "done"
+    },
+    {
+      "id": 7,
       "title": "Drag-and-Drop UX Polish",
       "description": "Fine-tune CDK Drag-and-Drop animations and fix the issue where tasks cannot be moved into empty columns during rapid transitions.",
       "attachments": 1,
@@ -38,27 +38,13 @@
       "status": "inReview"
     },
     {
-      "id": 7,
       "title": "Auth Guard Implementation",
       "description": "Secure the administrative routes by adding functional guards and ensuring the NgRx auth stream is properly initialized before navigation.",
+      "tag": "Security",
       "attachments": 1,
-      "authorAvatars": [
-        "",
-        ""
-      ],
       "date": "2026-04-28T08:45:00.000Z",
       "isPriority": true,
-      "tag": "Security",
-      "status": "done"
-    },
-    {
-      "title": "NgRx State Refactoring",
-      "description": "Optimize the global store by implementing memoized selectors and migrating legacy state slices to a more modular feature-based structure.",
-      "tag": "Development",
-      "attachments": 3,
-      "date": "2026-04-23T10:00:00.000Z",
-      "isPriority": true,
-      "status": "inReview",
+      "status": "inProgress",
       "authorAvatars": [
         "",
         ""

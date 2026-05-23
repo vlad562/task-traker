@@ -15,6 +15,10 @@ export const TaskActions = createActionGroup({
     'Update Task Success': props<{ task: Task }>(),
     'Update Task Failure': props<{ error: string }>(),
 
+    'Delete Task': props<{ id: number}>(),
+    'Delete Task Success': props<{ id: number}>(),
+    'Delete Task Failure': props<{ error: string }>(),
+
     'Switch Tasks': props<{ targetTask: Task; switchTask: Task }>(),
     'Switch Tasks Success': props<{ targetTask: Task; switchTask: Task }>(),
     'Switch Tasks Failure': props<{ error: string }>(),
