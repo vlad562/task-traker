@@ -24,14 +24,13 @@ ul {
 }
 
 a {
-  color: inherit; // цвет наследуется от li или своего класса
-  text-decoration: none; // убираем подчеркивание
-  display: block; // чтобы ссылка занимала весь li
+  color: inherit; 
+  text-decoration: none; 
+  display: block; 
   width: 100%;
   height: 100%;
 }
 
-/* 2. Обнуление базовых отступов */
 body,
 h1,
 h2,
@@ -54,22 +53,17 @@ dd {
 }
 
 button {
-  /* Убираем рамку и фон */
   appearance: none;
   background: none;
   border: none;
   padding: 0;
   margin: 0;
 
-  /* Настройки шрифта (чтобы наследовались от родителя) */
   font: inherit;
   color: inherit;
 
-  /* Делаем курсор кликабельным */
   cursor: pointer;
 
-  /* Убираем контур при клике (для чистого дизайна), 
-     но для доступности лучше заменить его на свой стиль */
   outline: none;
 }
 
@@ -80,22 +74,18 @@ button {
 }
 
 input {
-  /* Убираем системные рамки и фон */
   appearance: none;
-  -webkit-appearance: none; /* Для Safari */
+  -webkit-appearance: none; 
   background: transparent;
   border: none;
   outline: none;
 
-  /* Сброс внутренних отступов и маржи */
   padding: 0;
   margin: 0;
 
-  /* Наследование шрифта (инпуты по умолчанию его не наследуют!) */
   font: inherit;
   color: inherit;
 
-  /* Убираем специфические для браузеров элементы (например, в IE/Edge) */
   &::-ms-clear,
   &::-ms-reveal {
     display: none;
@@ -103,7 +93,6 @@ input {
     height: 0;
   }
 
-  /* Убираем синее свечение в Chrome/Safari при фокусе */
   &:focus {
     outline: none;
   }
