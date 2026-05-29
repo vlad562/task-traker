@@ -93,8 +93,12 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: #ff0000; /* Красный цвет для удаления */
+  color: #000;
   font-family: inherit;
+}
+
+.context-menu button:last-child {
+  color: red;
 }
 
 .context-menu button:hover {

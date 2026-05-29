@@ -38,38 +38,51 @@ export class TaskFormComponent {
   constructor(
     private store: Store,
     private dialogRef: MatDialogRef<TaskFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { status: TaskStatus },
+    @Inject(MAT_DIALOG_DATA) public data: any,
   ) {}
 
   taskForm = new FormGroup<TaskForm>({
-    title: new FormControl('Delete Task', { nonNullable: true }),
-    description: new FormControl('Create function for delete task', {
+    title: new FormControl('', { nonNullable: true }),
+    description: new FormControl('', {
       nonNullable: true,
     }),
-    tag: new FormControl('Development', { nonNullable: true }),
+    tag: new FormControl('', { nonNullable: true }),
     attachments: new FormControl(0, { nonNullable: true }),
     date: new FormControl(new Date(), { nonNullable: true }),
-    isPriority: new FormControl(true, { nonNullable: true }),
+    isPriority: new FormControl(false, { nonNullable: true }),
   });
 
-  onSubmit() {
-    if (this.taskForm.valid) {
-      const formValues = this.taskForm.getRawValue();
-
-      const newTask: Task = {
-        id: 0,
-        title: formValues.title,
-        description: formValues.description,
-        tag: formValues.tag,
-        attachments: Number(formValues.attachments),
-        date: formValues.date,
-        isPriority: !!formValues.isPriority,
-        status: this.data.status,
-        authorAvatars: [],
-      };
-      this.store.dispatch(TaskActions.createTask({ task: newTask }));
-
-      this.dialogRef.close();
+  ngOnInit() {
+    if (this.data?.task) {
+      this.taskForm.patchValue(this.data.task);
     }
+  }
+
+  onSubmit() {
+    const formValues = this.taskForm.getRawValue();
+    const newTask: Task = {
+      id: this.data?.task?.id | 0,
+      title: formValues.title,
+      description: formValues.description,
+      tag: formValues.tag,
+      attachments: Number(formValues.attachments),
+      date: formValues.date,
+      isPriority: !!formValues.isPriority,
+      status: this.data.status,
+      authorAvatars: [],
+    };
+
+    if (this.data.update) {
+      this.store.dispatch(
+        TaskActions.updateTask({ id: newTask.id, changes: newTask }),
+      );
+    } else {
+      if (this.taskForm.valid) {
+        this.store.dispatch(TaskActions.createTask({ task: newTask }));
+
+        
+      }
+    }
+    this.dialogRef.close();
   }
 }

@@ -18,5 +18,5 @@
       </clipPath>
     </defs>
   </svg>
-  <input [placeholder]="placeholder()" />
+  <input #inputRef [placeholder]="placeholder()" (input)="onChange(inputRef.value)" />
 </div>

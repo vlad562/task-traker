@@ -3,10 +3,16 @@
   width: 100%;
   padding: 0 56px;
 
+  @media (max-width: 768px) {
+    padding: 0 16px; 
+  }
+
   .board-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 5px;
+    flex-wrap: wrap;
   }
 }
 .board-columns {
@@ -14,6 +20,14 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
   align-items: start;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 500px) {
+    grid-template-columns: repeat(1,1fr);
+  }
 }
 .drag-overlay {
   position: fixed;
@@ -21,4 +35,9 @@
   z-index: 9999;
   transform: rotate(2deg);
   opacity: 0.95;
+}
+
+.main__btn {
+  display: flex;
+  gap: 10px;
 }

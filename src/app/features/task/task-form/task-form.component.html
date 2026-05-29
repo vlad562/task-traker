@@ -2,13 +2,11 @@
 
 <mat-dialog-content>
   <form [formGroup]="taskForm" class="task-form-container">
-    <!-- Title -->
     <mat-form-field appearance="outline">
       <mat-label>Title</mat-label>
       <input formControlName="title" matInput placeholder="Введите название" />
     </mat-form-field>
 
-    <!-- Description -->
     <mat-form-field appearance="outline">
       <mat-label>Description</mat-label>
       <input
@@ -18,13 +16,11 @@
       />
     </mat-form-field>
 
-    <!-- Tag -->
     <mat-form-field appearance="outline">
       <mat-label>Tag</mat-label>
       <input matInput formControlName="tag" placeholder="Например: Frontend" />
     </mat-form-field>
 
-    <!-- Attachments (имитация) -->
     <mat-form-field appearance="outline">
       <mat-label>Attachments</mat-label>
       <input matInput placeholder="Ссылки или файлы" disabled="true" />
@@ -32,21 +28,14 @@
     </mat-form-field>
 
     <div class="row">
-      <!-- Date Picker -->
       <mat-form-field appearance="outline">
         <mat-label>Choose a date</mat-label>
         <input matInput formControlName="date" [matDatepicker]="picker" />
-        <!-- matInput должен быть на самом input -->
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
-      <!-- Checkbox -->
-      <mat-checkbox
-        color="primary"
-        formControlName="isPriority"
-        checked="true"
-      >
+      <mat-checkbox color="primary" formControlName="isPriority" checked="true">
         Important task
       </mat-checkbox>
     </div>

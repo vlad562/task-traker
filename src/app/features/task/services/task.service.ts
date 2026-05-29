@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 
 interface DragState {
   activeId: number | null;
@@ -15,7 +15,7 @@ interface DragState {
   providedIn: 'root',
 })
 export class DragService {
-  state: DragState = {
+  state = signal<DragState>({
     activeId: null,
     fromColumn: null,
     offsetX: 0,
@@ -24,15 +24,15 @@ export class DragService {
     y: 0,
     width: 0,
     height: 0,
-  };
+  });
   setDragState(state: Partial<DragState>) {
-    this.state = {
-      ...this.state,
+    this.state.update((current) => ({
+      ...current,
       ...state,
-    };
+    }));
   }
   clear() {
-    this.state = {
+    this.state.set({
       activeId: null,
       fromColumn: null,
       offsetX: 0,
@@ -41,6 +41,6 @@ export class DragService {
       y: 0,
       width: 0,
       height: 0,
-    };
+    });
   }
 }

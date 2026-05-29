@@ -13,6 +13,8 @@ import { Task } from './interfaces/task.interface';
 import { ContextMenuDirective } from '../../share/directive/context-menu/context-menu.directive';
 import { TaskService } from '../../core/services/task-service.service';
 import { TaskActions } from './state/task.action';
+import { TaskFormComponent } from './task-form/task-form.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-task',
@@ -26,6 +28,7 @@ export class TaskComponent {
   store = inject(Store);
   dragService = inject(DragService);
   taskService = inject(TaskService);
+  dialog = inject(MatDialog);
 
   isMenuOpen = signal<boolean>(false);
   menuPosition = signal<{ x: number; y: number }>({ x: 0, y: 0 });
@@ -58,6 +61,13 @@ export class TaskComponent {
     el.setPointerCapture(event.pointerId);
   }
 
+  openTaskForm() {
+    this.dialog.open(TaskFormComponent, {
+      height: '400px',
+      data: { task: this.task(), update: true },
+    });
+  }
+
   openMenu(coords: { x: number; y: number }, taskId: number) {
     this.menuPosition.set(coords);
     this.selectedTaskId.set(taskId);
@@ -71,9 +81,8 @@ export class TaskComponent {
   }
 
   deleteTask() {
-    const idToDelete = this.selectedTaskId();
-    if (idToDelete) {
-      this.store.dispatch(TaskActions.deleteTask({ id: idToDelete }));
-    }
+    const idUpdateTask = this.selectedTaskId();
+    if (!idUpdateTask) return;
+    this.store.dispatch(TaskActions.deleteTask({ id: idUpdateTask }));
   }
 }

@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { ColumnComponent } from '../column/column.component';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Store } from '@ngrx/store';
@@ -18,9 +18,10 @@ import { TaskComponent } from '../task/task.component';
 })
 export class MainComponent {
   private store = inject(Store);
-  tasks = toSignal(this.store.select<Task[]>(taskFeature.selectTasks), {
+  public tasks = toSignal(this.store.select<Task[]>(taskFeature.selectTasks), {
     initialValue: [],
   });
+  public searchQuery = signal<string>('');
   public activeTab = 'new';
 
   constructor(public dragService: DragService) {
@@ -29,6 +30,14 @@ export class MainComponent {
 
   groupedTasks = computed(() => {
     const allTasks = this.tasks();
+    const searchedValue = this.searchQuery();
+
+    const filterTasks = searchedValue
+      ? allTasks.filter((task) =>
+          task.title.toLowerCase().includes(searchedValue),
+        )
+      : allTasks;
+
     const groups: Record<TaskStatus, Task[]> = {
       todo: [],
       inProgress: [],
@@ -36,7 +45,7 @@ export class MainComponent {
       done: [],
     };
 
-    allTasks.forEach((task) => {
+    filterTasks.forEach((task) => {
       if (groups[task.status]) {
         groups[task.status].push(task);
       }
@@ -45,23 +54,35 @@ export class MainComponent {
     return groups;
   });
 
+  draggedTask = computed<Task | null>(() => {
+    const id = this.dragService.state().activeId;
+    if (!id) return null;
+    return this.tasks().find((t) => t.id === id) ?? null;
+  });
+
+  searchTask(value: string) {
+    this.searchQuery.set(value);
+  }
+
   changeTab(tab: string) {
     this.activeTab = tab;
   }
 
   onPointerMove(event: PointerEvent) {
-    if (!this.dragService.state.activeId) return;
+    const dragState = this.dragService.state();
+    if (!dragState.activeId) return;
 
     const position = {
-      x: event.clientX - this.dragService.state.offsetX,
-      y: event.clientY - this.dragService.state.offsetY,
+      x: event.clientX - dragState.offsetX,
+      y: event.clientY - dragState.offsetY,
     };
 
     this.dragService.setDragState(position);
   }
 
   onPointerUp(event: PointerEvent) {
-    if (!this.dragService.state.activeId) return;
+    const dragState = this.dragService.state();
+    if (!dragState.activeId) return;
 
     const element = document.elementFromPoint(
       event.clientX,
@@ -73,11 +94,10 @@ export class MainComponent {
 
     if (toTask) {
       const targetId = Number(toTask.getAttribute('data-task-id'));
-      const switchId = this.dragService.state.activeId;
-      console.log(targetId, switchId)
+      const switchId = dragState.activeId;
       if (targetId === switchId) {
         this.dragService.clear();
-        return
+        return;
       }
       const allTasks = this.tasks();
       const task1 = allTasks.find((t) => t.id === targetId);
@@ -99,8 +119,7 @@ export class MainComponent {
       return;
     }
 
-    const state = this.dragService.state;
-    const task = this.tasks().find((t) => t.id === state.activeId);
+    const task = this.tasks().find((t) => t.id === dragState.activeId);
 
     if (!task) {
       this.dragService.clear();
@@ -113,11 +132,4 @@ export class MainComponent {
 
     this.dragService.clear();
   }
-
-  draggedTask = computed<Task | null>(() => {
-    const id = this.dragService.state.activeId;
-    if (!id) return null;
-
-    return this.tasks().find((t) => t.id === id) ?? null;
-  });
 }

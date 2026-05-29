@@ -2,54 +2,25 @@
   "tasks": [
     {
       "id": 3,
-      "title": "Form Validation Logic",
-      "description": "Add complex asynchronous validators to the task creation form to check for duplicate titles against the database in real-time.",
-      "attachments": 2,
-      "authorAvatars": [
-        ""
-      ],
-      "date": "2026-04-27T11:00:00.000Z",
-      "isPriority": false,
-      "tag": "Development",
-      "status": "todo"
+      "title": "Delete Task",
+      "description": "Create function for delete task",
+      "tag": "Development,dsfsdfsdf",
+      "attachments": 0,
+      "date": "2026-05-24T14:20:08.551Z",
+      "isPriority": true,
+      "status": "todo",
+      "authorAvatars": []
     },
     {
       "id": 4,
-      "title": "Delete Task",
+      "title": "complete search",
       "description": "Create function for delete task",
-      "attachments": 0,
-      "authorAvatars": [],
-      "date": "2026-05-03T13:35:52.606Z",
-      "isPriority": true,
       "tag": "Development",
-      "status": "done"
-    },
-    {
-      "id": 7,
-      "title": "Drag-and-Drop UX Polish",
-      "description": "Fine-tune CDK Drag-and-Drop animations and fix the issue where tasks cannot be moved into empty columns during rapid transitions.",
-      "attachments": 1,
-      "authorAvatars": [
-        ""
-      ],
-      "date": "2026-04-24T14:30:00.000Z",
+      "attachments": 0,
+      "date": "2026-06-10T17:00:00.000Z",
       "isPriority": true,
-      "tag": "UI/UX",
-      "status": "inReview"
-    },
-    {
-      "title": "Auth Guard Implementation",
-      "description": "Secure the administrative routes by adding functional guards and ensuring the NgRx auth stream is properly initialized before navigation.",
-      "tag": "Security",
-      "attachments": 1,
-      "date": "2026-04-28T08:45:00.000Z",
-      "isPriority": true,
-      "status": "inProgress",
-      "authorAvatars": [
-        "",
-        ""
-      ],
-      "id": 8
+      "status": "todo",
+      "authorAvatars": []
     }
   ]
 }

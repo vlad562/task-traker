@@ -87,6 +87,7 @@
     [style.left.px]="menuPosition().x"
     (click)="$event.stopPropagation()"
   >
+    <button (click)="openTaskForm()">Обновить задачу</button>
     <button (click)="deleteTask()">Удалить задачу</button>
   </div>
 }

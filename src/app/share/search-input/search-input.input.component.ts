@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 @Component({
   selector: 'app-input',
@@ -9,4 +9,11 @@ import { Component, input } from '@angular/core';
 })
 export class InputComponent {
   placeholder = input();
+
+  onChangeEvent = output<string>();
+
+  onChange(value: string) {
+    const transformValue = value.toLowerCase().trim();
+    this.onChangeEvent.emit(transformValue);
+  }
 }

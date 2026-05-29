@@ -1,5 +1,5 @@
 <div class="board-header">
-  <app-input placeholder="Search Items" />
+  <app-input (onChangeEvent)="searchTask($event)" placeholder="Search Items" />
 
   <div class="main__btn">
     <button
@@ -45,13 +45,13 @@
   <app-column columnId="done" title="Done" [tasks]="groupedTasks().done" />
 </div>
 
-@if (dragService.state.activeId) {
+@if (dragService.state().activeId) {
   <div
     class="drag-overlay"
-    [style.left.px]="dragService.state.x"
-    [style.top.px]="dragService.state.y"
-    [style.width.px]="dragService.state.width"
-    [style.height.px]="dragService.state.height"
+    [style.left.px]="dragService.state().x"
+    [style.top.px]="dragService.state().y"
+    [style.width.px]="dragService.state().width"
+    [style.height.px]="dragService.state().height"
   >
     <app-task [task]="draggedTask()!" />
   </div>
